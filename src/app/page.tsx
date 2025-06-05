@@ -1,11 +1,12 @@
 // Components
-import { Hero, InfoBoxes } from "@/components";
+import { Hero, InfoBoxes, HomeProperties } from "@/components";
 
 const HomePage = () => {
   return (
     <div>
       <Hero />
       <InfoBoxes />
+      <HomeProperties />
     </div>
   );
 };
