@@ -12,7 +12,7 @@ import { FaGoogle } from "react-icons/fa";
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const isLoggedIn = false;
   const pathname = usePathname();
 
   const toggleMobileMenu = () => {

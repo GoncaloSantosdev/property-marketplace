@@ -1,7 +1,13 @@
-import React from "react";
+// Components
+import { Hero, InfoBoxes } from "@/components";
 
 const HomePage = () => {
-  return <div>HomePage</div>;
+  return (
+    <div>
+      <Hero />
+      <InfoBoxes />
+    </div>
+  );
 };
 
 export default HomePage;
