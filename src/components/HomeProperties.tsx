@@ -1,11 +1,21 @@
 import Link from "next/link";
-// Data
-import properties from "@/mock/properties.json";
+// Database
+import { connectDB } from "@/config/database";
+// Models
+import Property from "@/models/Property";
 // Components
 import { PropertyCard } from "@/components";
+// Types
+import { PropertyTypes } from "@/types/property";
 
-const HomeProperties = () => {
-  const recentProperties = properties.slice(0, 3);
+const HomeProperties = async () => {
+  await connectDB();
+  const properties = await Property.find({}).lean();
+
+  const recentProperties = await Property.find({})
+    .sort({ createdAt: -1 })
+    .limit(3)
+    .lean();
 
   return (
     <>
@@ -19,7 +29,10 @@ const HomeProperties = () => {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {recentProperties.map((property) => (
-                <PropertyCard key={property._id} property={property} />
+                <PropertyCard
+                  key={property._id?.toString()}
+                  property={property as unknown as PropertyTypes}
+                />
               ))}
             </div>
           )}
